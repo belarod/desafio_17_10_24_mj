@@ -12,10 +12,7 @@ class Pedido:
         
     def __str__(self):
         prioridade_str = 'Sim' if self.prioritario else 'Não' #se self.priorit for true, prioridade_string recebe 'Sim' e será imprimido assi :D, senão, 'Nao'
-        return (f"Pedido ID: {self.id}\n"
-                f"Cliente: {self.nome_cliente}\n"
-                f"Prioritário: {prioridade_str}\n"
-                f"Limite de Espera: {self.limite_espera}\n")
+        return (f'Pedido ID: {self.id} - Cliente: {self.nome_cliente} - Prioritário: {prioridade_str} - Limite de Espera: {self.limite_espera}')
         
         
         
@@ -61,14 +58,26 @@ class Queue:
     
     ##############################
     
-    def enqueue(self, valor):
-        novo_no = Node(valor)
+    def enqueue(self, pedido: Pedido):
+        novo_no = Node(pedido)
         
         if self.is_empty():
             self.head = self.tail = novo_no
         else:
             self.tail.next = novo_no
             self.tail = novo_no
+        self.length += 1
+        
+    def enqueue_prioritario(self, pedido: Pedido):
+        novo_no = Node(pedido)
+
+        if self.is_empty():
+            self.head = self.tail = novo_no
+        else:
+            # Adiciona no início da fila para pedidos prioritários
+            novo_no.proximo = self.head
+            self.head = novo_no
+            
         self.length += 1
         
     def dequeue(self):
