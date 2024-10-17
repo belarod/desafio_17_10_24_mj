@@ -1,11 +1,14 @@
 from utils import Utils
 
 class Pedido:
+    proximo_id = 1
+    
     def __init__(self, nome_cliente: str, prioritario: bool, limite_espera: int, id: None):
         self.nome_cliente = nome_cliente
         self.prioritario = prioritario
         self.limite_espera = limite_espera
-        self.id = id
+        self.id = Pedido.proximo_id
+        Pedido._proximo_id += 1
         
     def __str__(self):
         prioridade_str = 'Sim' if self.prioritario else 'Não' #se self.priorit for true, prioridade_string recebe 'Sim' e será imprimido assi :D, senão, 'Nao'

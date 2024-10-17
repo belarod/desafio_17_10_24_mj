@@ -35,5 +35,4 @@ class App:
 
 queue = Queue()
 app = App()
-app.inicia_app()
-print(queue)    
+app.inicia_app() 
