@@ -33,7 +33,7 @@ class App:
         else: 
             print(f'A fila possui {Gerenciador.qtd_pedidos_na_fila} pedidos.')
 
-
-    
+queue = Queue()
 app = App()
 app.inicia_app()
+print(queue)    

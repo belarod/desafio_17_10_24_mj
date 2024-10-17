@@ -7,12 +7,19 @@ class Pedido:
         self.limite_espera = limite_espera
         self.id = id
         
+    def __str__(self):
+        prioridade_str = 'Sim' if self.prioritario else 'Não' #se self.priorit for true, prioridade_string recebe 'Sim' e será imprimido assi :D, senão, 'Nao'
+        return (f"Pedido ID: {self.id}\n"
+                f"Cliente: {self.nome_cliente}\n"
+                f"Prioritário: {prioridade_str}\n"
+                f"Limite de Espera: {self.limite_espera}\n")
+        
         
         
 class Node:
     def __init__(self, valor):
         self.valor = valor
-        self.next = None
+        self.proximo = None
 
 
 
